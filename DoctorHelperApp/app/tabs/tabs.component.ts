@@ -54,6 +54,7 @@ export class TabsComponent implements OnInit {
         const tabView = <TabView>args.object;
         const selectedTabViewItem = tabView.items[args.newIndex];
 
+        console.log("Index changed to: ", args.newIndex);
         this.title = selectedTabViewItem.title;
     }
 }
