@@ -6,6 +6,8 @@ import { HomeComponent } from "./home/home.component";
 import { SearchComponent } from "./search/search.component";
 import { TabsRoutingModule } from "./tabs-routing.module";
 import { TabsComponent } from "./tabs.component";
+import { AddPatientComponent } from "./home/addpatient/addpatient.modal";
+import { ModalDialogService } from "nativescript-angular/modal-dialog";
 
 @NgModule({
     imports: [
@@ -16,10 +18,17 @@ import { TabsComponent } from "./tabs.component";
         TabsComponent,
         HomeComponent,
         BrowseComponent,
-        SearchComponent
+        SearchComponent,
+        AddPatientComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    providers: [
+        ModalDialogService
+    ],
+    entryComponents: [
+        AddPatientComponent
     ]
 })
 export class TabsModule { }

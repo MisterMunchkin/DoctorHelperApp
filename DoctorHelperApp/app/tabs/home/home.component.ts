@@ -1,5 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewContainerRef } from "@angular/core";
 var Sqlite = require("nativescript-sqlite");
+import { registerElement } from "nativescript-angular/element-registry";
+import { Fab } from "nativescript-floatingactionbutton";
+import { ModalDialogService } from "nativescript-angular/directives/dialogs";
+import { AddPatientComponent } from "./addpatient/addpatient.modal";
+
+registerElement("Fab", () => Fab);
+
+
 
 @Component({
     selector: "Home",
@@ -11,7 +19,9 @@ export class HomeComponent implements OnInit {
     private database: any;
     public patients: Array<any>;
 
-    constructor() {
+    
+
+    constructor(private modal: ModalDialogService, private vcRef: ViewContainerRef) {
         /* ***********************************************************
         * Use the constructor to inject services.
         *************************************************************/
@@ -55,5 +65,22 @@ export class HomeComponent implements OnInit {
         * Use the "ngOnInit" handler to initialize data for the view.
         *************************************************************/
        this.fetch();
+    }
+
+    /**
+     * showModal
+     */
+    public showModal() {
+        console.log("<<<<<fab button clicked...");
+
+        let options = {
+            context: {},
+            fullscreen: true,
+            ViewContainerRef: this.vcRef
+        };
+
+        this.modal.showModal(AddPatientComponent, options).then(res => {
+            console.log(res);
+        });
     }
 }

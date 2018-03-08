@@ -7,12 +7,15 @@ Feel free to customize layouts and components to change how the tab view looks.
         <ActionItem text="Add" ios.position="right" (tap)="insert()"></ActionItem>
         <ActionItem text="Refresh" ios.position="left" (tap)="fetch()"></ActionItem>
     </ActionBar>
-    <StackLayout>
 
-        <ListView [items]="patients">
+    <GridLayout rows="*, auto">
+        <ListView [items]="patients" row="0" rowSpan="2">
             <ng-template let-patient="item">
                 <Label text="{{ patient.firstname }} {{ patient.lastname }}"></Label>
             </ng-template>
         </ListView>
-    </StackLayout>
+
+        <FAB row="1" (tap)="showModal()" icon="res://ic_plus_white" rippleColor="#f1f1f1" class="fab-button"></FAB>
+    </GridLayout>
+   
 </GridLayout>

@@ -4,7 +4,8 @@ import { Patient } from "./../../objects/patient.module"
 
 @Component({
     selector: "addpatient-modal",
-    templateUrl: "addpatient.modal.html"
+    moduleId: module.id,
+    templateUrl: "./addpatient.modal.html"
 })
 
 export class AddPatientComponent {
