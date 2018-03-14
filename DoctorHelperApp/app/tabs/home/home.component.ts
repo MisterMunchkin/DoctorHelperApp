@@ -4,6 +4,7 @@ import { registerElement } from "nativescript-angular/element-registry";
 import { Fab } from "nativescript-floatingactionbutton";
 import { ModalDialogService } from "nativescript-angular/directives/dialogs";
 import { AddPatientComponent } from "./addpatient/addpatient.modal";
+import { Patient } from "./../objects/patient.module";
 
 registerElement("Fab", () => Fab);
 
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
 
     private database: any;
     public patients: Array<any>;
-
+    public patientObject = new Patient();
     
 
     constructor(private modal: ModalDialogService, private vcRef: ViewContainerRef) {
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit {
     }
 
     public insert(){
-        this.database.execSQL("INSERT INTO patients (firstname, lastname) VALUES (?,?)", ["Thalia", "Tubs"]).then(id => {
+
+        this.database.execSQL("INSERT INTO patients (firstname, lastname) VALUES (?,?)", [this.patientObject.getFirstName, this.patientObject.getLastName]).then(id => {
             console.log("INSERT RESULT: ", id);
             this.fetch();
         }, error => {
@@ -73,14 +75,6 @@ export class HomeComponent implements OnInit {
     public showModal() {
         console.log("<<<<<fab button clicked...");
 
-        let options = {
-            context: {},
-            fullscreen: true,
-            ViewContainerRef: this.vcRef
-        };
-
-        this.modal.showModal(AddPatientComponent, options).then(res => {
-            console.log(res);
-        });
+        
     }
 }
