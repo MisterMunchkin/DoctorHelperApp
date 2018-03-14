@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
-import { ModalDialogParams } from "nativescript-angular/directives/dialogs";
 import { Patient } from "./../../objects/patient.module"
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 @Component({
-    selector: "addpatient-modal",
+    selector: "addpatient",
     moduleId: module.id,
-    templateUrl: "./addpatient.modal.html"
+    templateUrl: "./addpatient.component.html"
 })
 
 export class AddPatientComponent {

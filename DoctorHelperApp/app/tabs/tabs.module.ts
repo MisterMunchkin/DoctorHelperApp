@@ -6,8 +6,10 @@ import { HomeComponent } from "./home/home.component";
 import { SearchComponent } from "./search/search.component";
 import { TabsRoutingModule } from "./tabs-routing.module";
 import { TabsComponent } from "./tabs.component";
-import { AddPatientComponent } from "./home/addpatient/addpatient.modal";
+import { AddPatientComponent } from "./home/addpatient/addpatient.component";
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
+
+
 
 @NgModule({
     imports: [
